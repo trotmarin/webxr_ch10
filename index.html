@@ -7,31 +7,32 @@
     <title>WebXR API: Ch.10 Ex.9</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
-    
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js"></script>
 </head>
 <body>
-    <a-scene>
+    <a-scene embedded arjs>
         <!-- Asset Management System-->
         <a-assets>
-          <a-asset-item id="dragon" src="./assets/dragon/scene.gltf"></a-asset-item>
-          <a-asset-item id="city" src="./assets/city/scene.gltf"></a-asset-item>
-        </a-assets>
-        
-        <!--City GLTF model-->
-        <a-entity gltf-model="#city" 
-        rotation="0 -90 0" 
-        scale="0.0005 0.0005 0.0005"  
-        position="-0.5 1 -0.7"
-        ></a-entity>
+            <a-asset-item id="dragon" src="./assets/dragon/scene.gltf"></a-asset-item>
+            <a-asset-item id="city" src="./assets/city/scene.gltf"></a-asset-item>
+            </a-assets>
+        <a-marker type='pattern' url="./marker/friends.patt">
+            <!--City GLTF model-->
+            <a-entity gltf-model="#city" 
+            rotation="0 -90 0" 
+            scale="0.0005 0.0005 0.0005"  
+            position="-0.5 1 -0.7"
+            ></a-entity>
 
-        <!--Dragon GLTF model-->
-        <a-entity gltf-model="#dragon"
-        scale="1 1 1"
-        rotation="0 270 0"
-        position="0.5 1 -0.7"
-        animation-mixer
-        ></a-entity>
-        
+            <!--Dragon GLTF model-->
+            <a-entity gltf-model="#dragon"
+            scale="1 1 1"
+            rotation="0 270 0"
+            position="0.5 1 -0.7"
+            animation-mixer
+            ></a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
     </a-scene>
 </body>
 
