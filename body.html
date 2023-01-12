@@ -1,0 +1,125 @@
+<!-- Copyright (c) 2022 8th Wall, Inc. -->
+<!-- body.html is optional; elements will be added to your html body after app.js is loaded. -->
+
+<div class="logo">
+    <img src="assets/logo.png" alt="KB국민은행">
+    <h1>KB금융 사내벤쳐</h1>
+  </div>
+  
+  <div class="btns-wrap">
+    <a href="tel:010-9037-5858" class="btn">
+      <span class="btn-txt">휴 대 폰</span> 010-9037-5858
+    </a>
+    <a href="tel:02-2073-4184" class="btn">
+      <span class="btn-txt">사 무 실</span> 02-2073-4184
+    </a>
+    <a href="mailto:trotmarin@kbfg.com" class="btn">
+      <span class="btn-txt">이 메 일</span> trotmarin@kbfg.com
+    </a>
+      <a href="sms:010-9037-5858" class="btn">
+      <span class="btn-txt">S M S</span> 010-9037-5858
+    </a>
+  </div>
+  <a href="javascript:;" class="save-number" id="import-button">연락처 저장</a>
+  
+  
+  <!--<div id="next-button" style="z-index: 10">-->
+  <!--  <br>-->
+  <!--  <a id="btn-sub" href="tel:010-9037-5858">010-9037-5858</a>-->
+  <!--</div>-->
+  
+  <!-- <div id="import-button" style="z-index: 10">-->
+  <!--  <span id="btn-small">연락처</span>-->
+  <!--  <br>-->
+  <!--  <span id="btn-small">저장</span>-->
+  <!--</div>-->
+  
+  <div id="alert-area" style="display: none; z-index: 10">
+    <span class="alert-msg">연락처를 저장하였습니다</span>
+  </div>
+  
+  <a-scene
+    alert-message
+    next-button
+    import-button
+    xrextras-gesture-detector
+    landing-page="
+      mediaSrc: #dance-glb;
+      mediaAnimation: mixamo.com;
+      sceneEnvMap: pastel;
+      textShadow: True"
+    xrextras-loading
+    xrextras-runtime-error
+    renderer="colorManagement:true; webgl2: true;"
+    xrweb="disableWorldTracking: true">
+  
+  
+     <!--<a-entity class="alert-message" id="alert-message" text="value: Hello World" scale="3 3 3"></a-entity>-->
+  
+    <a-assets>
+      <!--<a-asset-item id="jelly-glb" src="assets/jellyfish-model.glb"></a-asset-item>-->
+      <!--<a-asset-item id="model-glb" src="assets/model.glb"></a-asset-item>-->
+      <!--<a-asset-item id="dance-glb" src="assets/scene.glb"></a-asset-item>-->
+      <a-asset-item id="dance-glb" src="assets/gangnam.glb"></a-asset-item>
+      <img id="jelly-thumb" src="assets/video-thumbnail.jpg">
+  
+    </a-assets>
+  
+  
+      <a-camera
+      position="0 8 8"
+      raycaster="objects: .cantap"
+      cursor="fuse: false; rayOrigin: mouse;">
+    </a-camera>
+  
+  
+    <a-entity
+        light="type: directional;
+           intensity: 0.8;
+           castShadow: true;
+           shadowMapHeight:2048;
+           shadowMapWidth:2048;
+           shadowCameraTop: 10;
+           target: #model;"
+        position="1 4.3 2.5"
+        xrextras-attach="target: model; offset: 1 15 3;"
+        shadow>
+    </a-entity>
+  
+    <a-light type="ambient" intensity="0.5"></a-light>
+  
+    <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
+  
+    <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
+    <xrextras-named-image-target name="model-target">
+      <!-- Add a child entity that can be rotated independently of the image target. -->
+      <a-entity xrextras-one-finger-rotate gltf-model="#jelly-glb"></a-entity>
+    </xrextras-named-image-target>
+  
+      <xrextras-named-image-target name="test">
+      <!-- Add a child entity that can be rotated independently of the image target. -->
+      <a-entity
+      id="model"
+      rotation="60 0 0"
+      scale="0.5 0.5 0.5"
+      position="0 0.4 0"
+      gltf-model="#dance-glb"
+      class="cantap"
+      animation-mixer="clip:; loop: repeat"
+      shadow="receive: false">
+        
+      </a-entity>
+          <a-image position="-0.16 -0.07 0" rotation="0 0 0" height="0.42" width="1.2" color="#f0f0f0"></a-image>
+      <!--<a-entity position="0.3 -0.1 0" text="value: 혁신기술개발부;color:black;" scale="1.5 1.5 1.5"></a-entity>  -->
+      <a-text value="AR기술개발부 | 차장" color="black" scale="0.33 0.33 0.33" position="-0.7 0.1 0" shader="msdf" font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+      <a-text value="07320 서울 영등포구 여의도동 54-1 7층" color="black" scale="0.3 0.3 0.3" position="-0.7 0.025 0" shader="msdf" font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+      <a-text value="T:010-9037-5858 F:02-2073-8888" color="black" scale="0.3 0.3 0.3" position="-0.7 -0.05 0" shader="msdf" font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+      <a-text value="E:trotmairn@kbfg.com" color="black" scale="0.3 0.3 0.3" position="-0.7 -0.125 0" shader="msdf" font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+       <a-text value="현재 염창센터 파견근무중('23년 1월까지)" color="red" scale="0.3 0.3 0.3" position="-0.7 -0.2 0" shader="msdf" font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+    </xrextras-named-image-target>
+  
+  
+    <!--<a-plane id="ground" position="0 0 0" rotation="-90 0 0" width="50" height="50" material="shader: shadow" shadow></a-plane>-->
+  
+  </a-scene>
+  
