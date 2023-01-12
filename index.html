@@ -9,8 +9,8 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.js"></script>
 </head>
-<body>
-    <a-scene embedded arjs>
+<body style='overflow: hidden;'>
+    <a-scene embedded arjs arjs="sourceType: webcam;">
         <!-- Asset Management System-->
         <a-assets>
             <a-asset-item id="dragon" src="./assets/dragon/scene.gltf"></a-asset-item>
@@ -18,37 +18,82 @@
             <a-asset-item id="gangnam" src="./assets/gangnam/gangnam.glb"></a-asset-item>
             </a-assets>
         <!-- <a-marker preset="custom" type='pattern' url="./marker/friends.patt"> -->
-            <a-marker preset="hiro">
-            <!--City GLTF model-->
-            <a-entity gltf-model="#city" 
-            rotation="0 -90 0" 
-            scale="0.0003 0.0003 0.0003"  
-            position="-0.5 1.4 -0.7"
-            ></a-entity>
-
-            <!--Dragon GLTF model-->
-            <a-entity gltf-model="#dragon"
-            scale="1 1 1"
-            rotation="0 270 0"
-            position="0.3 1.2 -0.7"
-            animation-mixer
-            ></a-entity>
+            <!-- <a-marker id="marker" preset="custom" type='pattern' url="./marker/smile.patt"> -->
+            <a-marker id="marker" preset="hiro">
+            <!-- <a-animation
+            attribute="scale"
+            dur="10000"
+            from="1 1 1"
+            to="1.2 1.2 1"
+            repeat="indefinite"
+            direction="alternate"
+            easing="ease-in-out"
+          ></a-animation> -->
+          
+            <a-ring color='red' radius-inner='0.04' radius-outer='0.05' position='0 0 0'
+            animation="property: scale; to: 1.2 1.2 1.2; loop: true; dur: 1000;"></a-ring>
 
             <!--Gangnam GLTF model-->
             <a-entity
             id="model"
-            rotation="60 0 0"
+            rotation="-45 0 0"
             scale="0.5 0.5 0.5"
             position="0 0 0"
             gltf-model="#gangnam"
             class="cantap"
             animation-mixer="clip:; loop: repeat"
-            shadow="receive: false">
-              
+            shadow="receive: false">              
             </a-entity>
+            
+            <a-image position="-0.16 -0.07 -0.1" rotation="90 0 0" height="0.42" width="1.2" color="#f0f0f0"></a-image>
+            <a-text value="신기술검증팀(테크혁신본부) | 차장" 
+            color="black" 
+            scale="0.33 0.33 0.33" 
+            position="-0.7 0 0" 
+            rotation="-90 0 0"
+            shader="msdf" 
+            font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"
+            ></a-text>
+            <a-text value="07320 서울 영등포구 여의도동 54-1 7층" 
+            color="black" 
+            scale="0.3 0.3 0.3" 
+            position="-0.7 0.025 0" 
+            rotation="-90 0 0"
+            shader="msdf" 
+            font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+            <a-text value="T:010-9037-5858 F:02-2073-8888" color="black" scale="0.3 0.3 0.3" position="-0.7 -0.05 0" shader="msdf" font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+            <a-text value="E:trotmairn@kbfg.com" color="black" scale="0.3 0.3 0.3" position="-0.7 -0.125 0" shader="msdf" font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+             <a-text value="현재 염창센터 파견근무중('23년 1월까지)" color="red" scale="0.3 0.3 0.3" position="-0.7 -0.2 0" shader="msdf" font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+
         </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
+
+    <!-- <script>
+        // get the marker by id
+        const marker = document.querySelector("#marker")
+        
+        // create an animation object
+        const pulse = document.createElement("a-animation")
+        pulse.setAttribute("attribute", "scale")
+        pulse.setAttribute("dur", "1000")
+        pulse.setAttribute("from", "1 1 1")
+        pulse.setAttribute("to", "1.2 1.2 1")
+        pulse.setAttribute("repeat", "indefinite")
+        pulse.setAttribute("direction", "alternate")
+        pulse.setAttribute("easing", "ease-in-out")
+  
+        // listen to marker detection event
+        marker.addEventListener("markerFound", () => {
+          marker.appendChild(pulse) //start the animation
+          console.log("start animation");
+        })
+  
+        marker.addEventListener("markerLost", () => {
+          marker.removeChild(pulse) //stop the animation
+        })
+      </script> -->
+
 </body>
 
 </html>
