@@ -62,21 +62,31 @@
 /*  font-family: 'Nanum Barun Gothic';*/
 /*}*/
 
+body {  
+  width:100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 #alert-area {
   width: 100%;
   height: auto;
   position: absolute;
-  top: 10vh;
-  /*left: 25vw;*/
-  padding: 1vh 0;
-  /*border: 0.1em solid white;*/
+  top: 40%;
+  left: 0;
   text-align: center;
 }
 
 .alert-msg {
-  color: white;
-  font-size: 1.3em;
-  font-weight: bold;
+  display: inline-block;
+  overflow: hidden;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 30px;
+  color: #fff;
+  background: rgba(0,0,0,0.7);
 }
 
 /*#logo-area {*/
