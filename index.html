@@ -5,11 +5,29 @@
     <!-- <meta name="viewport" content="x-ua-compatible IE=edge"/> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>WebXR API: Ch.10 Ex.9</title>
+    <link rel="stylesheet" type="text/css" href="style/index.css">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.js"></script>
 </head>
 <body style='overflow: hidden;'>
+
+  <div class="btns-wrap">
+    <a href="tel:010-9037-5858" class="btn">
+      <span class="btn-txt">휴 대 폰</span> 010-9037-5858
+    </a>
+    <a href="tel:02-2073-4184" class="btn">
+      <span class="btn-txt">사 무 실</span> 02-2073-4184
+    </a>
+    <a href="mailto:trotmarin@kbfg.com" class="btn">
+      <span class="btn-txt">이 메 일</span> trotmarin@kbfg.com
+    </a>
+      <a href="sms:010-9037-5858" class="btn">
+      <span class="btn-txt">S M S</span> 010-9037-5858
+    </a>
+  </div>
+  <a href="javascript:;" class="save-number" id="import-button">연락처 저장</a>
+
     <a-scene embedded arjs arjs="sourceType: webcam;">
         <!-- Asset Management System-->
         <a-assets>
@@ -17,6 +35,20 @@
             <a-asset-item id="city" src="./assets/city/scene.gltf"></a-asset-item>
             <a-asset-item id="gangnam" src="./assets/gangnam/gangnam.glb"></a-asset-item>
             </a-assets>
+
+            <a-entity
+            light="type: directional;
+               intensity: 0.8;
+               castShadow: true;
+               shadowMapHeight:2048;
+               shadowMapWidth:2048;
+               shadowCameraTop: 10;
+               target: #model;"
+            position="1 4.3 2.5"
+            shadow>
+        </a-entity>
+        <a-light type="ambient" intensity="0.8"></a-light>
+
         <!-- <a-marker preset="custom" type='pattern' url="./marker/uni.patt"> -->
             <a-marker id="marker" preset="custom" type='pattern' url="./marker/pattern-here_new.patt">
             <!-- <a-marker id="marker" preset="hiro"> -->
@@ -30,43 +62,56 @@
             easing="ease-in-out"
           ></a-animation>
           
-            <a-ring color='red' radius-inner='0.04' radius-outer='0.05' position='0 0 0'
-            animation="property: scale; to: 1.2 1.2 1.2; loop: true; dur: 1000;"></a-ring>
-
             <!--Gangnam GLTF model-->
             <a-entity
             id="model"
             rotation="-45 0 0"
             scale="0.5 0.5 0.5"
-            position="0 0 0"
+            position="0 0 -0.5"
             gltf-model="#gangnam"
             class="cantap"
             animation-mixer="clip:; loop: repeat"
             shadow="receive: false">              
             </a-entity>
             
-            <a-image position="-0.16 -0.07 -0.1" rotation="90 0 0" height="0.42" width="1.2" color="#f0f0f0"></a-image>
+            <a-image position="0 0 0" rotation="90 0 0" height="1.0" width="1.0" color="#F0F0F0"></a-image>
+
             <a-text value="신기술검증팀(테크혁신본부) | 차장" 
             color="black" 
-            scale="0.33 0.33 0.33" 
-            position="-0.7 0 0" 
+            scale="0.28 0.28 0.28" 
+            position="-0.43 0.1 -0.4" 
             rotation="-90 0 0"
             shader="msdf" 
             font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"
             ></a-text>
-            <a-text value="07320 서울 영등포구 여의도동 54-1 7층" 
+
+            <a-text value="07237 서울 영등포구 의사당대로 13 8층" 
             color="black" 
-            scale="0.3 0.3 0.3" 
-            position="-0.7 0.025 0" 
+            scale="0.23 0.23 0.23" 
+            position="-0.43 0.1 -0.3" 
             rotation="-90 0 0"
             shader="msdf" 
             font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
-            <a-text value="T:010-9037-5858 F:02-2073-8888" color="black" scale="0.3 0.3 0.3" position="-0.7 -0.05 0" shader="msdf" font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
-            <a-text value="E:trotmairn@kbfg.com" color="black" scale="0.3 0.3 0.3" position="-0.7 -0.125 0" shader="msdf" font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
-             <a-text value="현재 염창센터 파견근무중('23년 1월까지)" color="red" scale="0.3 0.3 0.3" position="-0.7 -0.2 0" shader="msdf" font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
-
+            
+            <a-text value="T)010-9037-5858 F)02-2073-8888" 
+            color="black" 
+            scale="0.23 0.23 0.23" 
+            position="-0.43 0.1 -0.2"
+            rotation="-90 0 0"
+            shader="msdf" 
+            font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+            <a-text value="E)trotmairn@kbfg.com" 
+            color="black" 
+            scale="0.23 0.23 0.23" 
+            position="-0.43 0.1 -0.1" 
+            rotation="-90 0 0"
+            shader="msdf" 
+            font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+           
         </a-marker>
         <a-entity camera></a-entity>
+
+
     </a-scene>
 
     <script>
