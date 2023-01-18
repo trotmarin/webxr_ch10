@@ -30,7 +30,7 @@
   </div>
   <a href="javascript:;" class="save-number" id="import-button">연락처 저장</a>
 
-    <a-scene embedded arjs arjs="sourceType: webcam;">
+    <a-scene embedded arjs="debugUIEnabled: false; patternRatio: 0.75; sourceType: webcam;">
         <!-- Asset Management System-->
         <a-assets>
             <a-asset-item id="dragon" src="./assets/dragon/scene.gltf"></a-asset-item>
@@ -52,17 +52,12 @@
         <a-light type="ambient" intensity="0.8"></a-light>
 
         <!-- <a-marker preset="custom" type='pattern' url="./marker/uni.patt"> -->
-            <a-marker id="marker" preset="custom" type='pattern' url="./marker/pattern-here_new.patt">
+            <a-marker id="marker" preset="custom" type='pattern' url="./marker/pattern-here_new (6).patt">
             <!-- <a-marker id="marker" preset="hiro"> -->
-            <a-animation
-            attribute="scale"
-            dur="10000"
-            from="1 1 1"
-            to="1.2 1.2 1"
-            repeat="indefinite"
-            direction="alternate"
-            easing="ease-in-out"
-          ></a-animation>
+              
+              <a-box id="border" rotation="-90 0 0" position="0 -0.01 0" width="1" height="1" depth="0.001" color="gray" 
+              animation="property: scale; to: 1.2 1.2 1; dur: 1000; easing: easeInOutSine; loop: true; radius:0.1;"
+              on="markerFound: border.setAttribute('animation', 'property: scale; to: 1.3 1.3 1; dur: 1000; easing: easeInOutSine; loop:true; radius:0.1;')"></a-box>
           
             <!--Gangnam GLTF model-->
             <a-entity
@@ -75,41 +70,87 @@
             animation-mixer="clip:; loop: repeat"
             shadow="receive: false">              
             </a-entity>
-            
-            <a-image position="0 0 0" rotation="90 0 0" height="1.0" width="1.0" color="#F0F0F0"></a-image>
 
-            <a-text value="신기술검증팀(테크혁신본부) | 차장" 
+            <!-- <a-plane color="#CCC" height="20" width="20"></a-plane> -->
+            <a-plane rotation="-90 0 0" height="1.0" width="1.0" color="#F0F0F0"></a-plane>
+            <a-plane rotation="-90 0 0" height="0.9" width="0.9" opacity="1"></a-plane>
+
+            <!-- <a-image rotation="-90 0 0" src="/assets/effect/border.gif"></a-image> -->
+
+            <a-text value="차장 조태원" 
             color="black" 
-            scale="0.28 0.28 0.28" 
+            scale="0.36 0.36 0.36" 
             position="-0.43 0.1 -0.4" 
             rotation="-90 0 0"
             shader="msdf" 
             font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"
             ></a-text>
 
-            <a-text value="07237 서울 영등포구 의사당대로 13 8층" 
+            <a-text value="신기술검증팀(테크혁신본부)" 
             color="black" 
-            scale="0.23 0.23 0.23" 
+            scale="0.33 0.33 0.33" 
             position="-0.43 0.1 -0.3" 
+            rotation="-90 0 0"
+            shader="msdf" 
+            font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"
+            ></a-text>
+
+            <a-text value="Address (07237)" 
+            color="black" 
+            scale="0.30 0.30 0.30" 
+            position="-0.43 0.1 -0.2" 
             rotation="-90 0 0"
             shader="msdf" 
             font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
             
-            <a-text value="T)010-9037-5858 F)02-2073-8888" 
+            <a-text value="서울 영등포구 의사당대로 13 8층" 
             color="black" 
-            scale="0.23 0.23 0.23" 
-            position="-0.43 0.1 -0.2"
-            rotation="-90 0 0"
-            shader="msdf" 
-            font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
-            <a-text value="E)trotmairn@kbfg.com" 
-            color="black" 
-            scale="0.23 0.23 0.23" 
+            scale="0.30 0.30 0.30" 
             position="-0.43 0.1 -0.1" 
             rotation="-90 0 0"
             shader="msdf" 
             font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+            
+            <a-text value="Mobile 010-9037-5858" 
+            color="black" 
+            scale="0.33 0.33 0.33" 
+            position="-0.43 0.1 0"
+            rotation="-90 0 0"
+            shader="msdf" 
+            font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+            
+            <a-text value="Office 02-2073-4184" 
+            color="black" 
+            scale="0.33 0.33 0.33" 
+            position="-0.43 0.1 0.1"
+            rotation="-90 0 0"
+            shader="msdf" 
+            font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+            
+            <a-text value="E-Mail trotmairn@kbfg.com" 
+            color="black" 
+            scale="0.33 0.33 0.33" 
+            position="-0.43 0.1 0.2" 
+            rotation="-90 0 0"
+            shader="msdf" 
+            font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
            
+            <a-text value="FAX 0502-308-0893" 
+            color="black" 
+            scale="0.33 0.33 0.33" 
+            position="-0.43 0.1 0.3" 
+            rotation="-90 0 0"
+            shader="msdf" 
+            font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+           
+            <a-text value="신기술(메타버스 VR/AR) 검증 담당" 
+            color="red" 
+            scale="0.30 0.30 0.30" 
+            position="-0.43 0.1 0.4" 
+            rotation="-90 0 0"
+            shader="msdf" 
+            font="https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json"></a-text>
+  
         </a-marker>
         <a-entity camera></a-entity>
 
@@ -120,26 +161,29 @@
         // get the marker by id
         const marker = document.querySelector("#marker")
         
-        // create an animation object
-        const pulse = document.createElement("a-animation")
-        pulse.setAttribute("attribute", "scale")
-        pulse.setAttribute("dur", "1000")
-        pulse.setAttribute("from", "1 1 1")
-        pulse.setAttribute("to", "1.2 1.2 1")
-        pulse.setAttribute("repeat", "indefinite")
-        pulse.setAttribute("direction", "alternate")
-        pulse.setAttribute("easing", "ease-in-out")
+        // // create an animation object
+        // const pulse = document.createElement("a-animation")
+        // pulse.setAttribute("attribute", "scale")
+        // pulse.setAttribute("dur", "1000")
+        // pulse.setAttribute("from", "1 1 1")
+        // pulse.setAttribute("to", "1.2 1.2 1")
+        // pulse.setAttribute("repeat", "indefinite")
+        // pulse.setAttribute("direction", "alternate")
+        // pulse.setAttribute("easing", "ease-in-out")
   
         // listen to marker detection event
         marker.addEventListener("markerFound", () => {
-          marker.appendChild(pulse) //start the animation
-          console.log("start animation");
+          // marker.appendChild(pulse) //start the animation
+          console.log("marker detected");
         })
   
         marker.addEventListener("markerLost", () => {
-          marker.removeChild(pulse) //stop the animation
+          // marker.removeChild(pulse) //stop the animation
+          console.log("makrer lost")
         })
       </script>
+
+
 
 </body>
 
