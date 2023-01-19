@@ -36,3 +36,25 @@ AFRAME.registerComponent('import-button', {
           });
         }
       });
+
+let alpha = 0;
+
+if ('ondeviceorientation' in window) {
+  window.addEventListener('deviceorientation', (event) => {
+    var alpha = event.alpha;
+    console.log("alpha", alpha);
+  });
+} else {
+  console.log("Device Orientation API not supported.");
+}
+
+let compass = document.getElementById("compass");
+
+if ('ondeviceorientation' in window) {
+  window.addEventListener('deviceorientation', (event) => {
+    var alpha = event.alpha;
+    compass.style.transform = `rotate(${alpha}deg)`;
+  });
+} else {
+  console.log("Device Orientation API not supported.");
+}
